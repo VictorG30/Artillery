@@ -1,47 +1,28 @@
 config:
-  target: "https://api.todoist.com"
+  target: "https://content.capi-nonprod.newscorp.com"
   phases:
-    - duration: 10
-      arrivalRate: 10
-      rampTo: 1
+    - duration: 1
+      arrivalRate: 140
       name: "Warm up the application"
-    - duration: 10
-      arrivalRate: 15
-      name: "Sustained max load"
-  plugins:
-    faker:
-      locale: en
-  variables:
-    firstName: "$faker.name.firstName"
   defaults:
    headers:
-      Authorization: Bearer 26c9ec2580db442bd4abd62a1fbe75361473e5fc
-      Content-type: application/json
+      x-api-key: "IwoWntHSHE7pxnq2cBSNe1fEFAeas01b9RgmCWhg"
 scenarios:
   - flow:
-      - get:
-          url: "/rest/v1/tasks"
       - post:
-          url: "/rest/v1/tasks"
+          url: "/ingest/processors/GSHOWCASE"
           json:
-            content: "{{ firstName }}"
-            due_string: "03/21/2021 at 12:00"    
-            due_lang: "en"
-            priority: 4
-          capture:
-            json: "$.id"
-            as: "idTask"
-      - log: "{{ firstName }}"
+            id: "500-thetimes"
+            createdDate: "2021-08-21T15:00:09.000Z"    
+            updatedDate: "2021-08-21T15:00:09.000Z"
+            publisher: "thetimes"
+            content: "<entry><id>https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=500</id><published>date</published><updated>date</updated><g:panel type=\"SINGLE_STORY\">https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=idPanel</g:panel><g:panel_title>Six things you need to know if you're a single first-time home</g:panel_title><g:overline>Six things yo</g:overline><title>Six things you need to know if you're a single first-time home buyer</title><author><name> idPanel-thetimes </name></author><link href=\"https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=idPanel\"/><media:content url=\"https://content.capi-stage.newscorp.com/images/77cdfd73bcba8a969accb6ac12cf2856?combo2to1=1200\"></media:content><g:bullet_list><g:list_item>Emmerdale spoilers LIVE: Shock affair for David &amp; Victoria plus EastEnders &amp; Coronation Street latest updates</g:list_item><g:list_item>Bullet 2 Bullet 2 idPanel-thetimes </g:list_item><g:list_item>Bullet 1 Bullet 1 idPanel-thetimes </g:list_item></g:bullet_list></entry>"
+            user: "vekaerre@gmail.com"
+            domain: "http://news-showcase-develop.showcase.newspress.app"   
       - get:
-          url: "/rest/v1/tasks/{{ idTask }}"
-      - post:
-          url: "/rest/v1/tasks/{{ idTask }}"
-          json:
-            content: "Updated"
-      - post:
-          url: "/rest/v1/tasks/{{ idTask }}/close"
-      - post:
-          url: "/rest/v1/tasks/{{ idTask }}/reopen"
-      - delete:
-          url: "/rest/v1/tasks/{{ idTask }}"
+          url: "/content/articles/complete/GSHOWCASE/500-thetimes"  
+
+
+
+
 # For more information: https://artillery.io/docs/script-reference/
