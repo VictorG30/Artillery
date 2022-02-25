@@ -1,8 +1,12 @@
 config:
+  payload:
+    path: "ids.csv"
+    fields:
+      - "id"
   target: "https://content.capi-nonprod.newscorp.com"
   phases:
     - duration: 1
-      arrivalRate: 140
+      arrivalRate: 1
       name: "Warm up the application"
   defaults:
    headers:
@@ -12,15 +16,16 @@ scenarios:
       - post:
           url: "/ingest/processors/GSHOWCASE"
           json:
-            id: "500-thetimes"
-            createdDate: "2021-08-21T15:00:09.000Z"    
-            updatedDate: "2021-08-21T15:00:09.000Z"
+            id: "{{ id }}-thetimes"
+            createdDate: "2021-08-24T15:00:09.000Z"    
+            updatedDate: "2021-08-24T15:00:09.000Z"
             publisher: "thetimes"
-            content: "<entry><id>https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=500</id><published>date</published><updated>date</updated><g:panel type=\"SINGLE_STORY\">https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=idPanel</g:panel><g:panel_title>Six things you need to know if you're a single first-time home</g:panel_title><g:overline>Six things yo</g:overline><title>Six things you need to know if you're a single first-time home buyer</title><author><name> idPanel-thetimes </name></author><link href=\"https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=idPanel\"/><media:content url=\"https://content.capi-stage.newscorp.com/images/77cdfd73bcba8a969accb6ac12cf2856?combo2to1=1200\"></media:content><g:bullet_list><g:list_item>Emmerdale spoilers LIVE: Shock affair for David &amp; Victoria plus EastEnders &amp; Coronation Street latest updates</g:list_item><g:list_item>Bullet 2 Bullet 2 idPanel-thetimes </g:list_item><g:list_item>Bullet 1 Bullet 1 idPanel-thetimes </g:list_item></g:bullet_list></entry>"
+            content: "<entry><id> Hola </id><published>date</published><updated>date</updated><g:panel type=\"SINGLE_STORY\">https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=idPanel</g:panel><g:panel_title>Six things you need to know if you're a single first-time home</g:panel_title><g:overline>Six things yo</g:overline><title>Six things you need to know if you're a single first-time home buyer</title><author><name> idPanel-thetimes </name></author><link href=\"https://www.thetimes.co.uk/money/15395677/single-first-time-home-buyer-tips/?id=idPanel\"/><media:content url=\"https://content.capi-stage.newscorp.com/images/77cdfd73bcba8a969accb6ac12cf2856?combo2to1=1200\"></media:content><g:bullet_list><g:list_item>Emmerdale spoilers LIVE: Shock affair for David &amp; Victoria plus EastEnders &amp; Coronation Street latest updates</g:list_item><g:list_item>Bullet 2 Bullet 2 idPanel-thetimes </g:list_item><g:list_item>Bullet 1 Bullet 1 idPanel-thetimes </g:list_item></g:bullet_list></entry>"
             user: "vekaerre@gmail.com"
             domain: "http://news-showcase-develop.showcase.newspress.app"   
       - get:
-          url: "/content/articles/complete/GSHOWCASE/500-thetimes"  
+          url: "/content/articles/complete/GSHOWCASE/{{ id }}-thetimes"  
+          log: "{{ id }}"
 
 
 
