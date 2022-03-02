@@ -1,0 +1,47 @@
+config:
+  target: "https://api.todoist.com"
+  phases:
+    - duration: 10
+      arrivalRate: 10
+      rampTo: 1
+      name: "Warm up the application"
+    - duration: 10
+      arrivalRate: 15
+      name: "Sustained max load"
+  plugins:
+    faker:
+      locale: en
+  variables:
+    firstName: "$faker.name.firstName"
+  defaults:
+   headers:
+      Authorization: Bearer 26c9ec2580db442bd4abd62a1fbe75361473e5fc
+      Content-type: application/json
+scenarios:
+  - flow:
+      - get:
+          url: "/rest/v1/tasks"
+      - post:
+          url: "/rest/v1/tasks"
+          json:
+            content: "{{ firstName }}"
+            due_string: "03/21/2021 at 12:00"    
+            due_lang: "en"
+            priority: 4
+          capture:
+            json: "$.id"
+            as: "idTask"
+      - log: "{{ firstName }}"
+      - get:
+          url: "/rest/v1/tasks/{{ idTask }}"
+      - post:
+          url: "/rest/v1/tasks/{{ idTask }}"
+          json:
+            content: "Updated"
+      - post:
+          url: "/rest/v1/tasks/{{ idTask }}/close"
+      - post:
+          url: "/rest/v1/tasks/{{ idTask }}/reopen"
+      - delete:
+          url: "/rest/v1/tasks/{{ idTask }}"
+# For more information: https://artillery.io/docs/script-reference/
