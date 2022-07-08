@@ -6,14 +6,14 @@ config:
       - "source"
       - "date"
     # order: sequence
-  target: "https://content.capi-nonprod.newscorp.com"
+  target: "https://content.capi-stage.newscorp.com"
   phases:
     - duration: 1
-      arrivalRate: 700
+      arrivalRate: 10
       name: "Stress"
   defaults:
    headers:
-      x-api-key: "IwoWntHSHE7pxnq2cBSNe1fEFAeas01b9RgmCWhg"
+      x-api-key: "JpsHr1pGuf521KouPnem248i1ctf7Hw9WvSD4t96"
 scenarios:
   - flow:
       - post:
