@@ -5,11 +5,11 @@ config:
       - "idPanel"
       - "source"
       - "date"
-    # order: sequence
+    order: sequence
   target: "https://content.capi-stage.newscorp.com"
   phases:
     - duration: 1
-      arrivalRate: 10
+      arrivalRate: 1
       name: "Stress"
   defaults:
    headers:
@@ -19,12 +19,31 @@ scenarios:
       - post:
           url: "/ingest/processors/GSHOWCASE"
           json:
-            id: "{{ idPanel }}-{{ source }}"
+            id: "{{ idPanel }}-{{ source }}-5aac0926c26434efa3bf7a5197999a59"
             createdDate: "{{ date }}"    
             updatedDate: "{{ date }}"
-            publisher: "thetimes"
-            content: "<entry><id>https://www.{{ source }}.co.uk/money/15395677/single-first-time-home-buyer-tips/?id={{ idPanel }}</id><published>{{ date }}</published><updated>{{ date }}</updated><g:panel type=\"SINGLE_STORY\">https://www.{{ source }}.co.uk/money/15395677/single-first-time-home-buyer-tips/?id={{ idPanel }}</g:panel><g:panel_title>Artillery Test</g:panel_title><g:overline>Six things yo</g:overline><title>Six things you need to know if you're a single first-time home buyer</title><author><name>. , : ; ‘ – – _ @ ‘ ‘ \" \" / \\ {{ idPanel }}-{{ source }} </name></author><link href=\"https://www.{{ source }}.co.uk/money/15395677/single-first-time-home-buyer-tips/?id={{ idPanel }}\"/><media:content url=\"https://content.capi-stage.newscorp.com/images/77cdfd73bcba8a969accb6ac12cf2856?combo2to1=1200\"></media:content><g:bullet_list><g:list_item>Emmerdale spoilers LIVE: Shock affair for David &amp; Victoria plus EastEnders &amp; Coronation Street latest updates</g:list_item><g:list_item>Bullet 2 Bullet 2 {{ idPanel }}-{{ source }} </g:list_item><g:list_item>Bullet 1 Bullet 1 {{ idPanel }}-{{ source }} </g:list_item></g:bullet_list></entry>"
+            publisher: "{{ source }}"
+            content: "<entry><id>https://www.{{source}}.co.uk/money/15395677/single-first-time-home-buyer-tips/?id={{idPanel}}</id><published>{{date}}</published><updated>{{date}}</updated><g:panel type=\"SINGLE_STORY\">https://www.{{source}}.co.uk/money/15395677/single-first-time-home-buyer-tips/?id={{idPanel}}</g:panel><g:panel_title>Six things you need to know if you're a single first-time home</g:panel_title><g:overline>Six things yo</g:overline><title>Created by Artillery</title><author><name> Victor Garcia {{idPanel}}-{{source}} </name></author><link href=\"https://www.{{source}}.co.uk/money/15395677/single-first-time-home-buyer-tips/?id={{idPanel}}\"/><media:content url=\"https://content.capi-stage.newscorp.com/images/77cdfd73bcba8a969accb6ac12cf2856?combo2to1=1200\"></media:content><g:bullet_list><g:list_item>Emmerdale spoilers LIVE: Shock affair for David &amp; Victoria plus EastEnders &amp; Coronation Street latest updates</g:list_item><g:list_item>Bullet Artillery {{idPanel}}-{{source}} </g:list_item><g:list_item>Bullet Artillery {{idPanel}}-{{source}} </g:list_item></g:bullet_list></entry>"
             user: "vekaerre@gmail.com"
-            domain: "http://news-showcase-develop.showcase.newspress.app"   
+            domain: "http://news-showcase-develop.showcase.newspress.app"
+            originalArticle: [
+              {
+              mainArticle: "true",
+              gcapiId: "d74abab27e11956757d7c91135a98520",
+              title: "Six things you need to know if you're a single first-time home buyer"
+              },   
+              {           
+              mainArticle: "false",
+              gcapiId: "d74abab27e11956757d7c91135a98520",
+              title: "Why Nuno Espirito Santo is right man to rebuild Tottenham, even after 67 days and TEN other candidates"
+              },
+              {           
+              mainArticle: "false",
+              gcapiId: "46a0ed60ca96842537e1a02ca410d029",
+              title: "Mum claims tumble dryer sheets are the secret to keeping bugs away in the summer"
+              }
+              ]
+      - get:
+          url: "/content/articles/{{ source }}"
 
 # For more information: https://artillery.io/docs/script-reference/
