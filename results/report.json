@@ -1,34 +1,33 @@
 {
   "aggregate": {
-    "timestamp": "2022-07-14T22:55:10.127Z",
-    "scenariosCreated": 1,
-    "scenariosCompleted": 1,
-    "requestsCompleted": 2,
+    "timestamp": "2022-07-18T14:28:35.838Z",
+    "scenariosCreated": 20,
+    "scenariosCompleted": 20,
+    "requestsCompleted": 20,
     "latency": {
-      "min": 501,
-      "max": 961,
-      "median": 731,
-      "p95": 961,
-      "p99": 961
+      "min": 2860,
+      "max": 3451,
+      "median": 3242.5,
+      "p95": 3447,
+      "p99": 3451
     },
     "rps": {
-      "count": 2,
-      "mean": 1
+      "count": 20,
+      "mean": 4.49
     },
     "scenarioDuration": {
-      "min": 1840.1,
-      "max": 1840.1,
-      "median": 1840.1,
-      "p95": 1840.1,
-      "p99": 1840.1
+      "min": 2948.6,
+      "max": 3858.9,
+      "median": 3325.7,
+      "p95": 3798.2,
+      "p99": 3858.9
     },
     "scenarioCounts": {
-      "0": 1
+      "0": 20
     },
     "errors": {},
     "codes": {
-      "200": 1,
-      "403": 1
+      "200": 20
     },
     "matches": 0,
     "customStats": {},
@@ -37,47 +36,64 @@
     "phases": [
       {
         "duration": 1,
-        "arrivalRate": 1,
+        "arrivalRate": 20,
         "name": "Stress"
       }
     ]
   },
   "intermediate": [
     {
-      "timestamp": "2022-07-14T22:55:10.126Z",
-      "scenariosCreated": 1,
-      "scenariosCompleted": 1,
-      "requestsCompleted": 2,
+      "timestamp": "2022-07-18T14:28:35.836Z",
+      "scenariosCreated": 20,
+      "scenariosCompleted": 20,
+      "requestsCompleted": 20,
       "latency": {
-        "min": 501,
-        "max": 961,
-        "median": 731,
-        "p95": 961,
-        "p99": 961
+        "min": 2860,
+        "max": 3451,
+        "median": 3242.5,
+        "p95": 3447,
+        "p99": 3451
       },
       "rps": {
-        "count": 2,
-        "mean": 1
+        "count": 20,
+        "mean": 4.49
       },
       "scenarioDuration": {
-        "min": 1840.1,
-        "max": 1840.1,
-        "median": 1840.1,
-        "p95": 1840.1,
-        "p99": 1840.1
+        "min": 2948.6,
+        "max": 3858.9,
+        "median": 3325.7,
+        "p95": 3798.2,
+        "p99": 3858.9
       },
       "scenarioCounts": {
-        "0": 1
+        "0": 20
       },
       "errors": {},
       "codes": {
-        "200": 1,
-        "403": 1
+        "200": 20
       },
       "matches": 0,
       "latencies": [
-        961000000,
-        501000000
+        3047000000,
+        2860000000,
+        3026000000,
+        3226000000,
+        3353000000,
+        3154000000,
+        3358000000,
+        3359000000,
+        3376000000,
+        3210000000,
+        3374000000,
+        3329000000,
+        3407000000,
+        3443000000,
+        3451000000,
+        3104000000,
+        3068000000,
+        2871000000,
+        3238000000,
+        3247000000
       ],
       "customStats": {},
       "counters": {},

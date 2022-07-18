@@ -9,7 +9,7 @@ config:
   target: "https://content.capi-stage.newscorp.com"
   phases:
     - duration: 1
-      arrivalRate: 1
+      arrivalRate: 20
       name: "Stress"
   defaults:
    headers:
@@ -43,7 +43,7 @@ scenarios:
               title: "Mum claims tumble dryer sheets are the secret to keeping bugs away in the summer"
               }
               ]
-      - get:
-          url: "/content/articles/{{ source }}"
+      # - get:
+      #     url: "/content/articles/shortform/{{ source }}"
 
 # For more information: https://artillery.io/docs/script-reference/
